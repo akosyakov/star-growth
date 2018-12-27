@@ -1,0 +1,47 @@
+{
+  "name": "star-growth",
+  "version": "1.0.0",
+  "description": "Measure how fast your GitHub repo is growing using stars",
+  "main": "lib/node/index.js",
+  "repository": "https://github.com/akosyakov/star-growth.git",
+  "author": "Anton Kosyakov <anton.kosyakov@typefox.io>",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/d3-scale-chromatic": "^1.3.0",
+    "@types/d3-time-format": "^2.1.0",
+    "@types/mocha": "^5.2.5",
+    "@types/node": "^8.0.0",
+    "@types/react": "^16.7.18",
+    "@types/react-dom": "^16.0.11",
+    "@types/recharts": "^1.1.6",
+    "micro": "^9.3.3",
+    "micro-dev": "^3.0.0",
+    "mocha": "^5.2.0",
+    "now": "^12.1.14",
+    "rimraf": "^2.6.2",
+    "typescript": "^3.2.2",
+    "webpack": "^4.28.2",
+    "webpack-cli": "^3.1.2"
+  },
+  "dependencies": {
+    "d3-scale-chromatic": "^1.3.3",
+    "react": "16.7.0-alpha.2",
+    "react-dom": "16.7.0-alpha.2",
+    "recharts": "^1.4.2"
+  },
+  "scripts": {
+    "prepare": "yarn run clean && yarn compile && yarn bundle:dev",
+    "build": "yarn compile && yarn bundle",
+    "clean": "yarn compile:clean && yarn bundle:clean",
+    "watch": "yarn compile:watch & yarn bundle:watch",
+    "compile": "tsc",
+    "compile:clean": "rimraf lib",
+    "compile:watch": "yarn compile -w --preserveWatchOutput",
+    "test": "mocha lib/**/*.spec.js",
+    "bundle": "webpack",
+    "bundle:dev": "yarn bundle --mode=development",
+    "bundle:clean": "rimraf dist",
+    "bundle:watch": "yarn bundle:dev -w",
+    "dev": "micro-dev"
+  }
+}
